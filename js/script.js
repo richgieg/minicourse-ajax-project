@@ -7,11 +7,11 @@ function loadData() {
     var $nytElem = $('#nytimes-articles');
     var $greeting = $('#greeting');
 
-    // clear out old data before new request
+    // Clear out old data before new request
     $wikiElem.text("");
     $nytElem.text("");
 
-    // load streetview
+    // Load Street View image
     var streetStr = $('#street').val();
     var cityStr = $('#city').val();
     var address = streetStr + ', ' + cityStr;
@@ -20,6 +20,7 @@ function loadData() {
     streetviewUrl += address;
     $body.append('<img class="bgimg" src="' + streetviewUrl + '">');
 
+    // Cancel the submit action
     return false;
 };
 
