@@ -38,7 +38,7 @@ function loadData() {
     });
 
     // Get Wikipedia info
-    var wikiUrl = 'http://en.wikipeddia.org/w/api.php?action=opensearch' +
+    var wikiUrl = 'http://en.wikipedia.org/w/api.php?action=opensearch' +
         '&format=json&search=' + cityStr;
 
     // Create error handler for Wikipedia JSONP request
