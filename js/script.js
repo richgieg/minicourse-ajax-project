@@ -20,6 +20,21 @@ function loadData() {
     streetviewUrl += address;
     $body.append('<img class="bgimg" src="' + streetviewUrl + '">');
 
+    // Get NY Times articles
+    var ntTimesApiKey = 'e817161e84db6654032367d6982af781:5:74042945';
+    var nyTimesUrl = 'http://api.nytimes.com/svc/search/v2/articlesearch.json?sort=newest&fl=headline,web_url,snippet';
+    nyTimesUrl += '&q=' + cityStr + '&api-key=' + ntTimesApiKey;
+    $.getJSON(nyTimesUrl, function(data) {
+        $nytHeaderElem.text('New York Times Articles About ' + cityStr);
+        var articles = data.response.docs;
+        for (var i = 0; i < articles.length; i++) {
+            var article = articles[i];
+            $nytElem.append('<li class="article">' +
+                '<a href="' + article.web_url + '">' + article.headline.main +
+                '</a><p>' + article.snippet + '</p></li>');
+        }
+    });
+
     // Cancel the submit action
     return false;
 };
